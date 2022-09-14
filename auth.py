@@ -1,24 +1,19 @@
 #Blueprint is a way to organize group of related views. It is used to register with the application and registering views and other code. Fantasyproject has two blue prints - for authentication functions and blog posts functions. 
-
-#Below is the authentication function
-
-
+#Below is the authentication function. It is to create a work for the /auth directory.
 #The Fantasyproject passes the __name__ to be defined at bp and the url_prefix is used  to prepend all the URL associated with the blueprint.
 #You can always import using app.register.blueprint
-import functools
 
+import functools
 from flask import (Blueprint, flash, g, redirect, render_template, request, session, url_for)
 from werkzeug.security import check_password_hash, generate_password_hash
-
 from Fantasyproject.db import get_db
 
+
+
+#Create a blueprint for the authorization. A blueprint is an object that allows defining application functions. 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-
-
-
 #The code below talks about how to register a view form. Basically - anything below will return an HTML form for the client to fill out. Either validate the input and create a new user or present an error message. It just shows the form that the end-customer has to fill out. 
-
 @bp.route('/register', methods=('GET', 'POST')) #associates URL/register view and when receiving a request from /auth/register it will call the register and user the return value as response. Allows for http://127.0.0.1:5000/auth/register to exist.
 def register():
     if request.method == 'POST': #used to designate and validate the input (of a user submitting a form)
@@ -49,10 +44,7 @@ def register():
     return render_template('auth/register.html') #renders the actual template that contains HTML and will show. 
 
 
-
-
 #The code below follows the same pattern for the Register (above) but instead its for the actual LOGIN. In this case, the user is queried first and stored in variable for later user "user"
-
 @bp.route('/login', methods=('GET', 'POST')) #effectively the endpoint for the login function is auth.login (since login is on the AUTH App factory.
 def login():
     if request.method == 'POST':

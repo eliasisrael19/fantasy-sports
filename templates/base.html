@@ -1,19 +1,20 @@
-<!-- This base.html is used to create a "base" a sort of landing page for all of the sections. For reference head to this page: https://flask.palletsprojects.com/en/2.1.x/tutorial/templates/-->
+<!-- This base.html is used to create a "base" a sort of landing page for all of the sections. For reference head to this page: https://flask.palletsprojects.com/en/2.1.x/tutorial/templates/ This is used to fall into this main page-->
 
 <!doctype html>
 <title>{% block title %}{% endblock %} - Flaskr</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!-- Already has a link to the style.css file -->
 <nav>
-  <h1>Flaskr</h1>
+  <h1>Fantasy Project</h1>
   <ul>
     {% if g.user %}
       <li><span>{{ g.user['username'] }}</span>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+      <li><a href="{{ url_for('auth.logout') }}">Log Out</a> <!-- If g.user does have username, then display the button Log Out. -->
     {% else %}
-      <li><a href="{{ url_for('auth.register') }}">Register</a>
+      <li><a href="{{ url_for('auth.register') }}">Register</a> <!-- else, display the ability to log in or register.  -->
       <li><a href="{{ url_for('auth.login') }}">Log In</a>
     {% endif %}
   </ul>
+
 </nav>
 <section class="content">
   <header>
@@ -24,3 +25,5 @@
   {% endfor %}
   {% block content %}{% endblock %}
 </section>
+
+<!--This header is to have Register and Log In at the Top Right of the Page-->

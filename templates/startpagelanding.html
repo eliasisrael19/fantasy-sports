@@ -1,0 +1,51 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} Fantasy Project</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!-- Already has a link to the style.css file -->
+<nav>
+  <h1>Fantasy Project</h1>
+  <h1>Thanks for stumbling into this page fellow stranger.</h1>
+</nav>
+  
+
+
+<!-- Already has a link to the style.css file -->
+<link rel="stylesheet" href="{{ url_for('static', filename='tab.css') }}"> <!-- Already has a link to the style.css file -->
+
+<h3>Let's learn more about what's going on in this little project.</h3>
+<ul>
+    <li>@cclavette has been working with @eliasisrael to spin up a new working App as part of their mentorship.</li>
+    <li>What is this: The idea of this project is to learn how to create a basic app.</li>
+</ul>
+
+
+<h4>Some of the goals of this project are:</h4>
+<ol>
+    <li>Learn how to quickly spin up an App.</li>
+    <li>Build an integration with Stripe to debug.</li> 
+    <li>Actually have a running website that is suitable to use as a resume. Possibly use it during Perf Review for higher impact of work.</li> 
+    <li>Have this app to create a Stripe Integration and create a better User Experience as part of the new SaaS pillar.</li> 
+</ol>
+
+<h4>Where we currently are?</h4>
+<ol>
+    <li>We have built a very basic Flaskr</li>
+    <li>Still working out the schematics and have a logic in the website. Certain templates have been created - routing is wonky.</li>   
+    <li>Add whatever I would like to this page.</li> 
+    <li>Below you will find the different tabs to the different aspects of the Project</li>  
+</ol>
+
+<!-- Tab links -->
+<link rel="stylesheet" href="{{ url_for('static', filename='tab.css') }}"> <!-- Already has a link to the style.css file -->
+<div class="tab">
+    <button class="tablinks">WIP Perf Review Elias</button>
+    <button class="tablinks">Click <a class="action" href="{{ url_for('auth.register') }}">here</a> to begin exploring and you saved your blog posts</button>
+    <button class="tablinks">WIP Stripe Integration</button>
+</div>
+
+
+  
+
+
+
+
+  

@@ -1,0 +1,32 @@
+<!-- Used to receive all of the requests. It will show all of the blog posts. -->
+
+<h1>Nice to see you here</h1>
+
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Posts{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('stripe.blog.create') }}">New</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for post in posts %} <!--This handlebar function gives us the ability to access the information via python (aka - stripe.py) and list out all of the different "posts"-->
+    <article class="post">
+      <header>
+        <div>
+          <h1>{{ post['title'] }}</h1>
+          <div class="about">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</div>
+        </div>
+        {% if g.user['id'] == post['author_id'] %}
+          <a class="action" href="{{ url_for('stripe.blog.update', id=post['id']) }}">Edit</a>
+        {% endif %}
+      </header>
+      <p class="body">{{ post['body'] }}</p>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

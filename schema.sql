@@ -2,6 +2,7 @@
 
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS post;
+DROP TABLE IF EXISTS stripe_post;
 
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -18,3 +19,14 @@ CREATE TABLE post (
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
 --- The python functions that will run these SQL commands are found in the db.py file and starts with def init_db():
+
+
+-- Using same references and pulling from a new table called stripe_post
+CREATE TABLE stripe_post (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  author_id INTEGER NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  title TEXT NOT NULL,
+  body TEXT NOT NULL,
+  FOREIGN KEY (author_id) REFERENCES user (id)
+);
